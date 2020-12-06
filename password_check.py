@@ -29,6 +29,7 @@ def read_input(file_name):
     return array
 
 
+# Check if num of chars is contained in pw
 def is_valid_pw_one(combo):
     rule: Rule = combo[0]
     pw = combo[1]
@@ -40,6 +41,7 @@ def is_valid_pw_one(combo):
     return rule.lower <= count <= rule.upper
 
 
+# Check if chars are exclusively either at lower or upper index
 def is_valid_pw_two(combo):
     rule: Rule = combo[0]
     pw = combo[1]
