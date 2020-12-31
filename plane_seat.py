@@ -28,27 +28,18 @@ def find_missing_seat(seat_nums):
     missing_num = 0
     for num in seat_nums:
         missing_num ^= num
-        if num < min_num:
-            min_num = num
-        if num > max_num:
-            max_num = num
+        min_num = min(min_num, num)
+        max_num = max(max_num, num)
 
     # min num must be even
     if min_num % 2 == 1:
-        min_num = min_num - 1
+        min_num -= 1
         missing_num ^= min_num
 
-    # max num must be odd
-    if max_num % 2 == 0:
-        max_num = max_num + 1
+    # length (including boundaries) must be a multiple of 4
+    while (max_num - min_num + 1) % 4:
+        max_num += 1
         missing_num ^= max_num
-
-    count = max_num - min_num + 1  # i.e. including boarders
-
-    # count must a multiple of 4
-    if count % 4 != 0:  # must be 2 then, because count is even
-        missing_num ^= (max_num + 1)
-        missing_num ^= (max_num + 2)
 
     return missing_num
 
