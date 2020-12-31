@@ -31,6 +31,10 @@ def find_missing_seat(seat_nums):
         min_num = min(min_num, num)
         max_num = max(max_num, num)
 
+    # In the following steps, the sequence is extended outward to match the algo's criteria;
+    # The sequence must not be reduced inward
+    # because the missing num could be right next to the sequence's edge.
+
     # min num must be even
     if min_num % 2 == 1:
         min_num -= 1
